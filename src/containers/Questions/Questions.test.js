@@ -4,15 +4,17 @@ import ReactDOM from 'react-dom';
 
 import { MemoryRouter } from 'react-router-dom';
 
-import HomeContent from './Home';
+import Questions from './Questions';
 
 it('renders without crashing', () => {
   const div = document.createElement('div');
 
+  const match = {path: '/question'};
+
   ReactDOM.render(
     (
       <MemoryRouter>
-        <HomeContent/>
+        <Questions match={match}/>
       </MemoryRouter>
     ),
     div
