@@ -8,7 +8,6 @@ import API from './API'
 
 function Home() {
   const [data, setData] = useState({error:false, loading: true, entryPoint:''});
-
   const handleSuccess = response => {
     const { questions_url } = response.data;
     setData({...data, loading: false, entryPoint: questions_url});

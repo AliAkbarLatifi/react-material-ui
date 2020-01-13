@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 
 import PropTypes from 'prop-types';
 
@@ -27,24 +27,19 @@ const styles = (theme) => ({
   }
 });
 
-class NotFound extends Component {
-  render() {
-    // Styling
-    const { classes } = this.props;
-
-    return (
+function NotFound ({classes}) {
+  return (
       <EmptyState
-        icon={<FindIcon className={classes.emptyStateIcon} color="action" />}
-        title="Content Not Found"
-        description="The requested URL was not found on this server"
-        button={
-          <Fab className={classes.button} color="secondary" component={Link} to="/" variant="extended">
-            <HomeIcon className={classes.buttonIcon} /> Go Home
-          </Fab>
-        }
+          icon={<FindIcon className={classes.emptyStateIcon} color="action" />}
+          title="Content Not Found"
+          description="The requested URL was not found on this server"
+          button={
+            <Fab className={classes.button} color="secondary" component={Link} to="/" variant="extended">
+              <HomeIcon className={classes.buttonIcon} /> Go Home
+            </Fab>
+          }
       />
-    );
-  }
+  );
 }
 
 NotFound.propTypes = {

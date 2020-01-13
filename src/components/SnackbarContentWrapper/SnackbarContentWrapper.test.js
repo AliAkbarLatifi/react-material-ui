@@ -2,14 +2,17 @@ import React from 'react';
 
 import ReactDOM from 'react-dom';
 
-import Bar from './Bar';
+import SnackbarContentWrapper from './SnackbarContentWrapper';
 
 it('renders without crashing', () => {
   const div = document.createElement('div');
 
   ReactDOM.render(
     (
-      <Bar/>
+      <SnackbarContentWrapper
+          variant="success"
+          className=""
+          onClose={()=>{}} />
     ),
     div
   );

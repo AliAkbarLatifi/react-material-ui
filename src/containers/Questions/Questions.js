@@ -19,16 +19,14 @@ const useStyles = makeStyles( theme => ({
 }));
 
 
-
 function Questions({match}) {
   const classes = useStyles();
-  const apiUrl = match ? match.path : '/questions';
+  const apiUrl = match ? match.url : '/questions';
   const [data, setData] = useState({error:false, loading: true, questions:[]});
 
   const handleSuccess = response => {
     const questions = Array.isArray(response.data) ? response.data : [];
-    const res= {loading: false, questions};
-    setData({...data, ...res});
+    setData({...data, loading: false, questions});
   };
   const handleError = () => {
     setData({...data, loading: false, error: true});
