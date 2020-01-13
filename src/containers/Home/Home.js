@@ -9,22 +9,20 @@ import API from './API'
 function Home() {
   const [data, setData] = useState({error:false, loading: true, entryPoint:''});
 
-  useEffect(() => {
-    //ToDo This is comment because of CROS error
+  const handleSuccess = response => {
+    const { questions_url } = response.data;
+    setData({...data, loading: false, entryPoint: questions_url});
+  };
+  const handleError = () => {
+    setData({...data, err: true, loading: false});
+  };
 
+  useEffect(() => {
     API.getEntryPoint()
-        .then((response)=>{
-          const questionUrl = response.data && response.data.questions_url;
-          const res= {loading: false, entryPoint: questionUrl};
-          setData({...data, ...res});
-        });
-    //ToDo SetTimeout fn must be remove after CROS error solved by backend
-    setTimeout(()=>{
-      const questionUrl = 'questions';
-      const res= {loading: false, entryPoint: questionUrl};
-      setData({...data, ...res});
-    }, 200)
+        .then(handleSuccess)
+        .catch(handleError)
   },[]);
+
   const {loading, error, entryPoint} = data;
   return (
     <>
