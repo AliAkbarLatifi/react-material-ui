@@ -19,10 +19,9 @@ const useStyles = makeStyles( theme => ({
 }));
 
 
-
 function Questions({match}) {
   const classes = useStyles();
-  const apiUrl = match ? match.path : '/questions';
+  const apiUrl = match ? match.url : '/questions';
   const [data, setData] = useState({error:false, loading: true, questions:[]});
 
   useEffect(()=>{
@@ -42,7 +41,7 @@ function Questions({match}) {
         <LaunchScreen />
       }
       {hasData &&
-        <Container className={classes.root} maxWidth="false">
+        <Container className={classes.root} maxWidth={false}>
           <Typography className={classes.title} variant="h4" component="h1">Questions</Typography>
           <Grid container spacing={3}>
             {
