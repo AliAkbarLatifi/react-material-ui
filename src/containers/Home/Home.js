@@ -4,7 +4,7 @@ import { Button } from '@material-ui/core'
 import EmptyState from 'components/EmptyState';
 import LaunchScreen from 'components/LaunchScreen'
 
-// import API from './API'
+import API from './API'
 
 function Home() {
   const [data, setData] = useState({error:false, loading: true, entryPoint:''});
@@ -12,12 +12,12 @@ function Home() {
   useEffect(() => {
     //ToDo This is comment because of CROS error
 
-    // API.getEntryPoint()
-    //     .then((response)=>{
-    //       const questionUrl = response.data && response.data.questions_url;
-    //       const res= {loading: false, entryPoint: questionUrl};
-    //       setData({...data, ...res});
-    //     });
+    API.getEntryPoint()
+        .then((response)=>{
+          const questionUrl = response.data && response.data.questions_url;
+          const res= {loading: false, entryPoint: questionUrl};
+          setData({...data, ...res});
+        });
     //ToDo SetTimeout fn must be remove after CROS error solved by backend
     setTimeout(()=>{
       const questionUrl = 'questions';

@@ -1,9 +1,9 @@
-import Service from 'service';
+import Service from 'serviceAPI';
 
 const API = {};
 
 API.getEntryPoint = () => {
-    return Service.get(process.env.API_URL);
+    return Service.get('/');
 };
 
 export default API;
